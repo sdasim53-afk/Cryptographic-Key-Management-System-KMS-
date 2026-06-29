@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantumCrypt - Key Management Suite</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background grid & lighting elements -->
+    <div class="bg-glow"></div>
+    <div class="matrix-grid"></div>
+
+    <div class="app-container">
+        <header>
+            <div class="logo-shield">🛡️</div>
+            <h1>QuantumCrypt v1.0</h1>
+            <p class="subtitle">Next-Gen Public Cryptographic Engine</p>
+        </header>
+
+        <main class="dashboard-grid">
+            <!-- Tool 1: Key Generator -->
+            <section class="crypto-card">
+                <h2>🗝️ Secure Key Generator</h2>
+                <p class="card-desc">Generate production-grade cryptographic keys instantly.</p>
+                <div class="control-group">
+                    <label for="algoSelect">Algorithm Type</label>
+                    <select id="algoSelect">
+                        <option value="aes256">AES-256 Bit (Symmetric)</option>
+                        <option value="rsa2048">RSA-2048 Bit (Asymmetric)</option>
+                        <option value="hex64">Secure Hex Salt (64-char)</option>
+                    </select>
+                </div>
+                <button onclick="generateCryptoKey()" class="btn-primary animate-btn">Generate Secure Key</button>
+                <div class="output-area">
+                    <textarea id="keyOutput" readonly placeholder="Your generated key will appear here..."></textarea>
+                    <button onclick="copyToClipboard('keyOutput')" class="btn-secondary">Copy</button>
+                </div>
+            </section>
+
+            <!-- Tool 2: SHA-256 Hasher -->
+            <section class="crypto-card">
+                <h2>🧬 SHA-256 Data Hasher</h2>
+                <p class="card-desc">Compute secure, irreversible cryptographic digests.</p>
+                <div class="control-group">
+                    <label for="hashInput">Plaintext Data / Password</label>
+                    <input type="text" id="hashInput" placeholder="Enter text to digest..." oninput="autoHashData()">
+                </div>
+                <div class="output-area hash-box">
+                    <div id="hashOutput" class="hash-text">e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</div>
+                    <button onclick="copyToClipboardText('hashOutput')" class="btn-secondary">Copy Hash</button>
+                </div>
+            </section>
+
+            <!-- Tool 3: Message Unscrambler / Cipher Engine -->
+            <section class="crypto-card">
+                <h2>🔓 Text Unscrambler & Cipher</h2>
+                <p class="card-desc">Decode scrambled text or reverse custom cryptographic ciphers.</p>
+                <div class="control-group">
+                    <label for="cipherInput">Scrambled/Normal Text</label>
+                    <input type="text" id="cipherInput" placeholder="Enter text to process...">
+                </div>
+                <div class="control-group" style="display: flex; flex-direction: row; gap: 10px;">
+                    <button onclick="processCipher('encode')" class="btn-primary" style="background: #4facfe;">Scramble Text</button>
+                    <button onclick="processCipher('decode')" class="btn-primary" style="background: #10b981;">Unscramble to Normal</button>
+                </div>
+                <div class="output-area hash-box" style="margin-top: 15px;">
+                    <div id="cipherOutput" class="hash-text" style="color: #00f2fe;">Result will appear here...</div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>🔒 Formulated with standard Web Crypto API components. Execution runs purely client-side.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
